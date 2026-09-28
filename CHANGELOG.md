@@ -1,5 +1,51 @@
 # 变更记录
 
+## 2026-09-28 —— 五个成员新版本随发布波上架
+
+- taskpilot 0.3.3:后台任务的 ack/通知不再串号（bash-1 不再认领 bash-19);后台任务的轨迹折叠不再丢起始行与输出
+- session-title-edit 0.2.4:标题编辑入口在新旧两版宿主界面结构下都能找到标题
+- mobile 0.1.2:公网隧道恢复；隧道不通时不再展示扫不开的二维码
+- file-preview 0.4.0:产物预览与文件预览服务合并为一个包（已在 09-27 条目说明）
+- ankh-guard 0.4.0:重启门禁新增「preset 坏行」检查——preset 引用了装不上的模块时直接拦下重启并给出修复路径
+
+## 2026-09-28 —— local-files 加入，成员 14 个
+
+- 新成员：local-files（右栏本地文件浏览器：懒加载文件树 + 结构化预览，接管官方「文件」页签）——成员数 13 → 14；它没有 0.1.2 线版本，「不支持」清单随之点名
+- README 刷新：file-preview 换新版五张截图；context-guard / inline-html-render 换带标注的新图；ui-shortcuts 注明 0.1.7-rc.2 起官方自带快捷键设置；成员区间修正（file-preview `^0.4.0`、ankh-guard `^0.4.0`）
+
+## 2026-09-27 —— 产物预览合并为单包
+
+- `file-preview` 与 `ui-file-preview` 合并为单个 `@khorsheed/dsh-file-preview`（0.4.0）：产物预览只需装一个包，成员数 14 → 13；旧宿主线的成对安装说明保留
+- 已装用户：`@khorsheed/dsh-client-ui-file-preview` 可移除（npm 旧名已 deprecate，指向新包）
+
+## 2026-09-27 —— 元包展示与兼容表格化
+
+- 功能展示末尾新增「打包装：bundle-conversation-toolbox」一节（含详情页截图）：七件会话工具一次装齐，组件行仍可单独禁用
+- 每个成员的兼容信息改为「宿主版本 × 安装规格」小表格，完整规格直接可复制
+- 移除首屏总览图（一张图代表不了全部成员）
+
+## 2026-09-27 —— quote 加入，成员 14 个
+
+- 新成员：quote（选中任意文本浮出引用动作菜单）——成员数 13 → 14
+- README 重排：正文聚焦「目标 → 插件列表（含可复制包名与版本兼容）→ 功能展示」，安装指南整体折叠到文末；单包安装推荐官方「添加插件」对话框，打包装可用元包 `@khorsheed/dsh-bundle-conversation-toolbox`
+
+## 2026-09-27 —— 更名为 dsh-basic
+
+- 整合包仓与 profile 名从 dsh-web-basic / web-basic 改为 **dsh-basic / basic**：clone 地址、脚本名（`restart-into-basic.sh`）、profile 目录（`$DSH_HOME/profiles/basic`）随之变化；GitHub 上的旧名字保留重定向
+- 插件包名（`@khorsheed/dsh-*`）不变，已安装的成员不受影响
+
+## 2026-09-27 —— 新增三名成员，成员区间对齐最新发布线
+
+- 新成员：capability-catalog（能力目录）、inline-html-render（内联 HTML 卡片）、mobile（移动端呈现）——成员数 10 → 13
+- 五个成员的依赖区间从 `^0.2.0` 升到最新线（ankh-guard / message-tools / file-preview / ui-file-preview / taskpilot → `^0.3.2`）：整合包整体安装与单包安装拿到同一代成员
+- 整合包宿主地板抬到 `0.1.5-rc.1`：capability-catalog 与 mobile 没有更老的线。`0.1.2` 线宿主请停留在本次更新前的档案（`host-0.1.2-line` tag 随下一发布波提供），`0.1.x` 宿主继续用 `host-0.1.1-line`
+
+## 2026-09-27 —— 十个成员随宿主 0.1.7-rc.2 基线重发
+
+- 成员版本：ankh-guard 0.3.2、message-tools 0.3.2、taskpilot 0.3.2、context-guard 0.2.3、file-preview 0.3.2、ui-file-preview 0.3.2、message-timeline 0.2.3、session-title-edit 0.2.3、ui-shortcuts 0.2.3、whalesong 0.2.3。普通用户无需任何操作，随整合包更新即可
+- 看得见的变化：后台任务胶囊不再把前台跑的命令闪一下又收走（只列模型真正发起的后台作业）；快捷键插件在 0.1.7-rc.2 宿主上并入官方快捷键系统——插队发送 / 压缩上下文两条命令进官方目录，改键在官方「快捷键」面板里做（rc.2 起官方协议不支持鼠标键绑定；0.1.5 ~ rc.1 宿主上的完整自有实现不受影响）
+- 其余成员无功能变化，只是跟着新宿主基线重新验证了一遍（全量构建+测试双绿）
+
 ## 2026-09-10 —— 成员 0.2.0：适配宿主 0.1.2（先升宿主，再升插件）
 
 - 10 个成员插件集体升到 0.2.0，适配宿主 0.1.2 线。这是一次不兼容升级：**请先把宿主升到 `0.1.2-rc.1` 或更新，再装 0.2.0 成员**；还在 `0.1.0-rc.6` ~ `0.1.1-rc.2` 的宿主请继续用 0.1.x 成员（ankh-guard / file-preview 末版 0.1.1，其余末版 0.1.0），不要升级
